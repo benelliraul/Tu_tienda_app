@@ -37,6 +37,7 @@ public class usuario_logeado extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_logeado);
         final ArrayList<producto> mDataset = new ArrayList<>();
+        final TextView ver_url = (TextView) findViewById(R.id.url_imagen_tienda);
         final TextView direccion = (TextView) findViewById(R.id.direccion_dinamica);
         final TextView correo = (TextView) findViewById(R.id.correo_dinamico);
         final TextView nombre = (TextView) findViewById(R.id.nombre_dinamico);
@@ -57,6 +58,7 @@ public class usuario_logeado extends AppCompatActivity {
         String celular_rec=sharedPref.getString("celular","null");
         String ruta_imagen=sharedPref.getString("imagen","null");
         String categoria_rec=sharedPref.getString("categoria","null");
+        ver_url.setText(ruta_imagen);
         nombre.setText(nombre_rec);
         direccion.setText(direccion_rec);
         correo.setText(correo_rec);
@@ -68,7 +70,7 @@ public class usuario_logeado extends AppCompatActivity {
                 .centerInside()
                 .into(imagen_tienda);
         RequestQueue queue = Volley.newRequestQueue(ctx);
-        JsonArrayRequest request = new JsonArrayRequest(url+id_actual, new Response.Listener<JSONArray>() {
+        JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {

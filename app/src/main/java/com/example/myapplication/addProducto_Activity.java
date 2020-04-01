@@ -35,15 +35,19 @@ import static com.example.myapplication.R.drawable.error;
 public class addProducto_Activity extends AppCompatActivity {
     ImageView imagen_producto;
     Bitmap bitmap;
+    /*
     @Override
     protected void onRestart(){
         super.onRestart();
         limpiar();
         //onCreate();
     }
+
+     */
     final TextView nombreProducto = (TextView) findViewById(R.id.nombre_editar);
     final TextView descripcionNuevoProducto = (TextView) findViewById(R.id.descripcionNuevoProd);
     final TextView precioProducto = (TextView) findViewById(R.id.precioProducto);
+    public addProducto_Activity ctx =this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,7 @@ public class addProducto_Activity extends AppCompatActivity {
         imagen_producto = (ImageView) findViewById(R.id.imagen_producto);
         Button botonEnviarProducto;
         Button botonCancelar;
-        final addProducto_Activity ctx = this;
+        //final addProducto_Activity ctx = this;
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         final String id_tienda =sharedPref.getString("id_tienda","null");
         final SharedPreferences.Editor editor = sharedPref.edit();
@@ -70,7 +74,7 @@ public class addProducto_Activity extends AppCompatActivity {
         botonEnviarProducto.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                final RequestQueue queue = Volley.newRequestQueue(addProducto_Activity.this);
+                final RequestQueue queue = Volley.newRequestQueue(ctx);
                 String url_aceptarEditarPerfil = "https://benelliraul.pythonanywhere.com/nuevo_producto_app/"+ id_tienda;
                 Toast.makeText(ctx,url_aceptarEditarPerfil,Toast.LENGTH_LONG).show();
 
