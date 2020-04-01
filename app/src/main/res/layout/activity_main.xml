@@ -6,91 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        tools:ignore="MissingConstraints">
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="416dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="188dp"
+        android:text="@string/Titulo"
+        android:textAlignment="center"
+        android:textSize="@dimen/Tamaño_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/titulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Titulo"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
-            <TextView
-                android:id="@+id/nombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Nombre"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
-
-            <TextView
-                android:id="@+id/nombre_dinamico"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo"
-                tools:text="@string/Nombre_inicial" />
-
-            <ImageView
-                android:id="@+id/imagen_tienda"
-                android:layout_width="386dp"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/logo_tienda" />
-
-            <TextView
-                android:id="@+id/direccion_dinamica"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
-
-            <TextView
-                android:id="@+id/correo_dinamico"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
-
-            <TextView
-                android:id="@+id/celular_dinamico"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_titulo" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/ir_a_crear_tienda"
-                    android:layout_width="201dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="crear_tienda"
-                    android:text="@string/Boton_formulario"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
-                    android:id="@+id/boton_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="registro_activity"
-                    android:text="@string/boton_login" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,44 +30,55 @@ import java.util.Map;
 
 import static com.example.myapplication.R.drawable.error;
 
+
 public class MainActivity extends AppCompatActivity {
     //<action android:name="android.intent.action.MAIN" />
     String id_actual ="";
+    /*
     @Override
     public  void onRestart() {
         super.onRestart();
         evaluar_id();
     }
 
+     */
+    MainActivity ctx = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final MainActivity ctx = this;
-        ir_a_inicio(ctx.getCurrentFocus());
+        //final MainActivity ctx = this;
+        //ir_a_inicio(ctx.getCurrentFocus());
+        Intent intent = new Intent(ctx,inicioActivity.class);
+        startActivity(intent);
     }
+}
 
+
+    /*
     private void ir_a_inicio(View view) {
-        Intent intent = new Intent(this,inicioActivity.class);
+        Intent intent = new Intent(ctx,inicioActivity.class);
         startActivity(intent);
     }
 
     public void ir_a_logueado(View view){
-        Intent login = new Intent(this,Registro.class);
+        Intent login = new Intent(ctx,Registro.class);
         startActivity(login);
     }
     private void evaluar_id() {
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         String id_actual =sharedPref.getString("id_tienda","null");
-        SharedPreferences.Editor editor = sharedPref.edit();
         if (id_actual.equals("crear")){
-            ir_a_inicio(this.getCurrentFocus());
+            ir_a_inicio(ctx.getCurrentFocus());
 
         }else {
-            ir_a_logueado(this.getCurrentFocus());
+            ir_a_logueado(ctx.getCurrentFocus());
         }
     }
 }
+
+     */
 
 
 

@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,18 +36,14 @@ import static com.example.myapplication.R.drawable.error;
 public class addProducto_Activity extends AppCompatActivity {
     ImageView imagen_producto;
     Bitmap bitmap;
-    /*
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        limpiar();
-        //onCreate();
-    }
+    EditText nombreProducto;
+    EditText descripcionNuevoProducto;
+    EditText precioProducto;
+    String id_tienda;
 
-     */
-    final TextView nombreProducto = (TextView) findViewById(R.id.nombre_editar);
-    final TextView descripcionNuevoProducto = (TextView) findViewById(R.id.descripcionNuevoProd);
-    final TextView precioProducto = (TextView) findViewById(R.id.precioProducto);
+    //final TextView nombreProducto = (TextView) findViewById(R.id.nombre_editar);
+    //final TextView descripcionNuevoProducto = (TextView) findViewById(R.id.descripcionNuevoProd);
+    //final TextView precioProducto = (TextView) findViewById(R.id.precioProducto);
     public addProducto_Activity ctx =this;
 
     @Override
@@ -55,23 +52,26 @@ public class addProducto_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_add_producto);
 
         imagen_producto = (ImageView) findViewById(R.id.imagen_producto);
-        Button botonEnviarProducto;
-        Button botonCancelar;
+        nombreProducto = (EditText)findViewById(R.id.nombre_editar);
+        descripcionNuevoProducto = (EditText)findViewById(R.id.descripcionNuevoProd);
+        precioProducto = findViewById(R.id.precioProducto);
+        //Button botonEnviarProducto;
+        //Button botonCancelar;
         //final addProducto_Activity ctx = this;
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        final String id_tienda =sharedPref.getString("id_tienda","null");
-        final SharedPreferences.Editor editor = sharedPref.edit();
+        id_tienda =sharedPref.getString("id_tienda","null");
+        //final SharedPreferences.Editor editor = sharedPref.edit();
 
 
-        botonEnviarProducto =  (Button) findViewById(R.id.enviarNuevoProducto);
-        botonCancelar = (Button) findViewById(R.id.cancelarEnviarProd);
+        //botonEnviarProducto =  (Button) findViewById(R.id.enviarNuevoProducto);
+        //botonCancelar = (Button) findViewById(R.id.cancelarEnviarProd);
 
         //final TextView nombreProducto = (TextView) findViewById(R.id.nombre_editar);
         //final TextView descripcionNuevoProducto = (TextView) findViewById(R.id.descripcionNuevoProd);
         //final TextView precioProducto = (TextView) findViewById(R.id.precioProducto);
 
 
-        botonEnviarProducto.setOnClickListener(new View.OnClickListener(){
+        /*botonEnviarProducto.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 final RequestQueue queue = Volley.newRequestQueue(ctx);
@@ -107,11 +107,50 @@ public class addProducto_Activity extends AppCompatActivity {
                 };
                 queue.add(postRequest);
             };
-        });
+
+
+        });*/
+
     }
 
 
     public void cargar(View viev){cargar_imagen();}
+    public void enviar (View view){
+        accion();
+    }
+    public void accion(){
+        final RequestQueue queue = Volley.newRequestQueue(ctx);
+        String url_aceptarEditarPerfil = "https://benelliraul.pythonanywhere.com/nuevo_producto_app/"+ id_tienda;
+
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url_aceptarEditarPerfil,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(ctx, "Creando nuevo producto", Toast.LENGTH_SHORT).show();
+                        ir_logueado(ctx.getCurrentFocus());
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError errorr) {
+                        Toast.makeText(ctx, "Error, la imagen supera los 100 mb", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams(){
+                String imagen_nueva = convertir_img_string(bitmap);
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("producto", nombreProducto.getText().toString());
+                params.put("descripcion", descripcionNuevoProducto.getText().toString());
+                params.put("precio", precioProducto.getText().toString());
+                params.put("imagen_b64",imagen_nueva);
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
+    }
 
     private void cargar_imagen() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

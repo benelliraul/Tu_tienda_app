@@ -131,11 +131,18 @@ public class Registro extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         String id_actual = sharedPref.getString("id_tienda","crear");
         if(id_actual.equals("crear")){
-            Intent reiniciar = new Intent(this,this.getClass());
-            startActivity(reiniciar);
+            //Intent reiniciar = new Intent(this,this.getClass());
+            //startActivity(reiniciar);
 
         }else{ir_a_inico(Registro.this.getCurrentFocus());
 
+        }
+    }
+    public void redirigir(String id_tienda){
+        if(id_tienda.equals("crear")){
+            ir_a_inico(getCurrentFocus());
+        }else {
+            usuario_log(getCurrentFocus());
         }
     }
 

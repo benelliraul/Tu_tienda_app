@@ -17,20 +17,16 @@ public class inicioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        onRestart();
+
         setContentView(R.layout.activity_inicio);
         inicioActivity ctx = this;
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         String id_actual =sharedPref.getString("id_tienda","null");
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        /*if (id_actual.equals("crear")){
-            //Toast.makeText(ctx,"Bienvenido!!",Toast.LENGTH_LONG).show();
 
-        }else {
-            ir_a_logueado(ctx.getCurrentFocus());
-        }
 
-         */
     }
     @Override
     public void onRestart() {
@@ -40,9 +36,11 @@ public class inicioActivity extends AppCompatActivity {
         Button boton_login_out = (Button) findViewById(R.id.iniciar_sesion);
         Button boton_invitado = (Button) findViewById(R.id.btn_invitado);
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","null");
+        String id_actual =sharedPref.getString("id_tienda","crear");
         if(id_actual.equals("crear")){
-
+            //boton_invitado.setText("Soy invitado");
+            //boton_reg_carga.setText("Registrarme");
+            //boton_login_out.setText("Iniciar Sesion");
         }else{
             boton_invitado.setText("Mi Tienda");
             boton_reg_carga.setText("Agregar producto");
@@ -50,12 +48,6 @@ public class inicioActivity extends AppCompatActivity {
         }
     }
 
-
-    /* Boton Inicio sesion */
-    public void inicio_activity(View view){
-        Intent cambiarn = new Intent(this, Registro.class); /* llevar a clase login*/
-        startActivity(cambiarn);
-    }
 
     /* Boton soy visitante, lleva al main activity */
     public void iniciarSesion_activity(View view){
@@ -75,9 +67,9 @@ public class inicioActivity extends AppCompatActivity {
             editor.putString("id_tienda","crear");
             editor.apply();
             editor.commit();
-            Intent reiniciar = new Intent(this,this.getClass());
+            Intent reiniciar = new Intent(this,Visitante_inicio.class);
             startActivity(reiniciar);
-            this.finish();
+            //this.finish();
 
         }
 
@@ -94,10 +86,6 @@ public class inicioActivity extends AppCompatActivity {
             startActivity(logueado);
         }
 
-    }
-    public void ir_a_logueado (View view){
-        Intent logueado = new Intent(this,usuario_logeado.class);
-        startActivity(logueado);
     }
     public  void crear_tienda (View view){
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);

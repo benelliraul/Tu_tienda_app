@@ -60,11 +60,6 @@
                 android:textAlignment="center"
                 android:textSize="@dimen/Tamaño_titulo" />
 
-            <TextView
-                android:id="@+id/url_imagen_tienda"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
             <Button
                 android:id="@+id/boton_login"
                 android:layout_width="match_parent"
@@ -82,7 +77,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/my_recycler_view_prod"
                 android:layout_width="match_parent"
-                android:layout_height="293dp"
+                android:layout_height="wrap_content"
                 android:background="?attr/colorButtonNormal"
                 android:scrollbars="vertical">
 

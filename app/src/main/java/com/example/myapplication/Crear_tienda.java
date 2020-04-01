@@ -60,6 +60,11 @@ public class Crear_tienda extends AppCompatActivity {
     Double latitud_actual;
     Double longitud_actual;
     Boolean estado = new Boolean(b);
+    String nombre_nuevo;
+    String direccion_nueva ;
+    String celular_nuevo ;
+    String correo_nuevo ;
+    String contrasena_nueva;
 
 
     @Override
@@ -258,7 +263,24 @@ public class Crear_tienda extends AppCompatActivity {
             StringRequest request = new StringRequest(Request.Method.POST, url_form, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Toast.makeText(getApplicationContext(),response, Toast.LENGTH_LONG).show();
+
+                    if(response.equals("El nombre ya está registrado")||(response.equals("El correo ya está registrado"))) {
+                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                    }else{
+                        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada", ctx.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        String url_img = "https://benelliraul.pythonanywhere.com/static/img_tiendas/portada" +nombre_nuevo + ".jpg";
+                        editor.putString("nombre", nombre_nuevo);
+                        editor.putString("celular", celular_nuevo);
+                        editor.putString("correo", correo_nuevo);
+                        editor.putString("direccion", direccion_nueva);
+                        editor.putString("imagen", url_img);
+                        editor.putString("id_tienda", response);
+                        editor.apply();
+                        editor.commit();
+                        ir_a_logeado(ctx.getCurrentFocus());
+                    }
+
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -269,12 +291,11 @@ public class Crear_tienda extends AppCompatActivity {
             {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    SharedPreferences sharedPref = getSharedPreferences("teinda_logueada", ctx.MODE_PRIVATE);
-                    String nombre_nuevo = nombre.getText().toString();
-                    String direccion_nueva = direccion.getText().toString();
-                    String celular_nuevo = celular.getText().toString();
-                    String correo_nuevo = correo.getText().toString();
-                    String contrasena_nueva= contrasena.getText().toString();
+                    nombre_nuevo = nombre.getText().toString();
+                    direccion_nueva = direccion.getText().toString();
+                    celular_nuevo = celular.getText().toString();
+                    correo_nuevo = correo.getText().toString();
+                    contrasena_nueva= contrasena.getText().toString();
                     String imagen_nueva = convertir_img_string(bitmap);
 
                     Map<String,String> parametros = new HashMap<>();
@@ -297,9 +318,14 @@ public class Crear_tienda extends AppCompatActivity {
 
     }
 
+    private void ir_a_logeado(View view) {
+        Intent ir_a_loguead = new Intent (view.getContext(),usuario_logeado.class);
+        startActivity(ir_a_loguead);
+    }
+
     private String convertir_img_string(Bitmap bitmap) {
         ByteArrayOutputStream array = new ByteArrayOutputStream();
-        bitmap.compress(CompressFormat.JPEG,100,array);
+        bitmap.compress(CompressFormat.JPEG,75,array);
         byte[] imagenByte= array.toByteArray();
         String imagenStrin = Base64.encodeToString(imagenByte,Base64.DEFAULT);
 

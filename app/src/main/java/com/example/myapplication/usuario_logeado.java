@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,7 +38,6 @@ public class usuario_logeado extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_logeado);
         final ArrayList<producto> mDataset = new ArrayList<>();
-        final TextView ver_url = (TextView) findViewById(R.id.url_imagen_tienda);
         final TextView direccion = (TextView) findViewById(R.id.direccion_dinamica);
         final TextView correo = (TextView) findViewById(R.id.correo_dinamico);
         final TextView nombre = (TextView) findViewById(R.id.nombre_dinamico);
@@ -58,17 +58,25 @@ public class usuario_logeado extends AppCompatActivity {
         String celular_rec=sharedPref.getString("celular","null");
         String ruta_imagen=sharedPref.getString("imagen","null");
         String categoria_rec=sharedPref.getString("categoria","null");
-        ver_url.setText(ruta_imagen);
         nombre.setText(nombre_rec);
         direccion.setText(direccion_rec);
         correo.setText(correo_rec);
         celular.setText(celular_rec);
-        Picasso.with(usuario_logeado.this)
-                .load(ruta_imagen)
-                .error(error)
-                .fit()
-                .centerInside()
-                .into(imagen_tienda);
+        try{
+            Picasso.with(ctx)
+                    .load(ruta_imagen)
+                    .resize(230,230)
+                    .centerInside()
+                    .error(error)
+                    .centerInside()
+                    .into(imagen_tienda);
+            //  .fit()
+        } catch (Exception e) {
+            Toast.makeText(ctx, e.toString(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+
         RequestQueue queue = Volley.newRequestQueue(ctx);
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
@@ -107,7 +115,7 @@ public class usuario_logeado extends AppCompatActivity {
         startActivity(agregar_prod);
     }
     public void ir_a_inicio(View view){
-        Intent ir_a_inicio = new Intent (this,inicioActivity.class);
+        Intent ir_a_inicio = new Intent (ctx,inicioActivity.class);
         startActivity(ir_a_inicio);
     }
 }
