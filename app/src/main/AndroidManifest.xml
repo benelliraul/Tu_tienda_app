@@ -12,12 +12,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Buscar_cerca"></activity>
+        android:textAlignment="center"
+        android:theme="@style/nuevo">
+        <activity android:name=".Datos_gps"></activity>
+        <activity android:name=".Buscar_cerca" />
         <activity android:name=".Buscar" />
         <activity android:name=".Visitante_inicio" />
-        <activity android:name=".buscr_ubucacion" />
-        <activity android:name=".Localizar" />
         <activity android:name=".Visitante" />
         <activity android:name=".inicioActivity" />
         <activity android:name=".addProducto_Activity" />

@@ -3,4 +3,18 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="botones_inicio">#BF2B814F</color>
+    <color name="botones_fin">#68B36B</color>
+
+    <color name="principal">#148f77</color>
+
+    <color name="fondo_principal">#F4B96D</color>
+    <color name="principal_final">#D39229</color>
+
+    <color name="fondo_claro_inicio">#F5E4DEBB</color>
+    <color name="fondo_claro_fin">#DBACA790</color>
+
+    <color name="color_pie">#628A63</color>
+    <color name="botones_oliva">#47B669</color>
 </resources>

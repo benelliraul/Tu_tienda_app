@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/degradado_claro"
         android:orientation="vertical">
 
         <LinearLayout
@@ -16,19 +17,22 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="98dp">
+                android:layout_height="wrap_content"
+                android:background="@drawable/degradado_claro">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/degradado_claro"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/texto_1"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="@string/Titulo"
-                        android:textAlignment="center" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/sub_visitante"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/Tamaño_comun" />
 
                     <TextView
                         android:id="@+id/texto_2"
@@ -40,36 +44,60 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
                         <Button
                             android:id="@+id/button2"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/diseno_botones"
                             android:onClick="ir_a_localizacion"
                             android:text="Volver" />
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="3dp"
+                            android:layout_height="wrap_content" />
 
                         <Button
                             android:id="@+id/button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:background="@drawable/diseno_botones"
                             android:onClick="ir_a_loca_2"
                             android:text="Crear Tienda" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="3dp"
+                            android:layout_height="wrap_content" />
+
                     </LinearLayout>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/my_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?attr/colorButtonNormal"
+                android:background="@drawable/degradado_claro"
                 android:scrollbars="vertical">
 
 
             </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
     </LinearLayout>
 

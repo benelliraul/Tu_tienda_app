@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/degradado_claro"
     tools:context=".Crear_tienda">
 
     <TextView
@@ -24,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sub_titulo_crear">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,10 +56,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/Direccion"
+                android:importantForAutofill="no"
                 android:inputType="text"
                 android:textAlignment="center"
-                android:textSize="@dimen/Tamaño_comun"
-                android:importantForAutofill="no" />
+                android:textSize="@dimen/Tamaño_comun" />
 
             <EditText
                 android:id="@+id/Telefono_ingresado"
@@ -99,20 +101,55 @@
                 android:contentDescription="@string/imagen_a_cargar"
                 app:srcCompat="@drawable/logo_tienda_bmp" />
 
-            <Button
-                android:id="@+id/Boton_seleccionar_imagen"
+            <TextView
+                android:id="@+id/textView16"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:text="@string/Boton_seleccionar_imagen" />
+                android:layout_height="14dp"
+                android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/Boton_crear"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="Envair_datos"
-                android:text="@string/Boton_formulario" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/Boton_seleccionar_imagen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/diseno_botones"
+                    android:onClick="onClick"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:text="@string/Boton_seleccionar_imagen"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    android:layout_width="3dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/Boton_crear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/diseno_botones"
+                    android:onClick="Envair_datos"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:text="@string/Boton_formulario" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

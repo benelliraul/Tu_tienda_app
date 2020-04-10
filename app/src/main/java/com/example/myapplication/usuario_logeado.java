@@ -29,7 +29,6 @@ import static com.example.myapplication.R.drawable.error;
 
 public class usuario_logeado extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private MyAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     public usuario_logeado ctx = this;
 
@@ -66,11 +65,10 @@ public class usuario_logeado extends AppCompatActivity {
             Picasso.with(ctx)
                     .load(ruta_imagen)
                     .resize(230,230)
-                    .centerInside()
                     .error(error)
-                    .centerInside()
+                    .centerCrop()
+                    .transform(new CircleTransform())
                     .into(imagen_tienda);
-            //  .fit()
         } catch (Exception e) {
             Toast.makeText(ctx, e.toString(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();

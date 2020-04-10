@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/degradado_claro"
     tools:context=".addProducto_Activity">
 
     <TextView
@@ -93,8 +94,9 @@
         android:id="@+id/enviarNuevoProducto"
         android:layout_width="97dp"
         android:layout_height="48dp"
-        android:text="Enviar"
+        android:background="@drawable/diseno_botones"
         android:onClick="enviar"
+        android:text="Enviar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +106,7 @@
         android:id="@+id/cancelarEnviarProd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/diseno_botones"
         android:text="Cancelar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.857"
@@ -126,6 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:background="@drawable/diseno_botones"
         android:onClick="cargar"
         android:text="@string/Boton_seleccionar_imagen"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">TuTiendaMovil</string>
     <string name="Nombre">Nombre</string>
     <string name="Email">E-mail</string>
     <string name="Contraseña">Contraseña</string>
@@ -32,4 +32,9 @@
     <string name="buscar_cercanas">Buscar tiendas cerca</string>
     <string name="hint_buscar">Buscar tiendas que coincidan con...</string>
     <string name="sub_t_buscar_cerca">Buscar tiendas en un rango de ...</string>
+    <string name="sub_logeado">Tu Info</string>
+    <string name="sub_productos" />
+    <string name="sub_visitante">Tiendas Registradas</string>
+    <string name="pie_pag">RecoLab - Proyecto b_IT 2020</string>
+    <string name="sub_ubicacion">Obteniendo datos de GPS</string>
 </resources>

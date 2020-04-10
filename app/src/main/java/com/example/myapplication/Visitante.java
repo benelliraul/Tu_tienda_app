@@ -32,19 +32,8 @@ public class Visitante extends AppCompatActivity {
     public TextView texto_1;
     public TextView texto_2;
 
-    final String url = "https://benelliraul.pythonanywhere.com/lista_productos/30";
     String url_tiendas = "https://benelliraul.pythonanywhere.com/visitantes_app";
-    //public String clase = "tienda";
     String valor;
-    /*@Override
-    public  void onRestart() {
-        super.onRestart();
-        //direccion();
-    }
-     */
-
-
-    //private  MyAdapter  mi_adapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +47,9 @@ public class Visitante extends AppCompatActivity {
         direccion();
         texto_1 = (TextView) findViewById(R.id.texto_1);
         texto_2 = (TextView) findViewById(R.id.texto_2);
-        //texto_1.setText(id_actual);
-        //texto_2.setText(longitud);
 
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        //recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 

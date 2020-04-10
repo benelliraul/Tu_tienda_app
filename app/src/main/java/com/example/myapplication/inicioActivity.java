@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,21 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class inicioActivity extends AppCompatActivity {
-
-
+    inicioActivity ctx = this;
+    String id_general;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        onRestart();
-
         setContentView(R.layout.activity_inicio);
-        inicioActivity ctx = this;
-        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","null");
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-
-
+        onRestart();
     }
     @Override
     public void onRestart() {
@@ -35,12 +28,12 @@ public class inicioActivity extends AppCompatActivity {
         Button boton_reg_carga = (Button)findViewById(R.id.boton_registro);
         Button boton_login_out = (Button) findViewById(R.id.iniciar_sesion);
         Button boton_invitado = (Button) findViewById(R.id.btn_invitado);
-        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","crear");
+        String id_actual = id_actual(id_general);
+
         if(id_actual.equals("crear")){
-            //boton_invitado.setText("Soy invitado");
-            //boton_reg_carga.setText("Registrarme");
-            //boton_login_out.setText("Iniciar Sesion");
+            boton_invitado.setText("Soy invitado");
+            boton_reg_carga.setText("Registrarme");
+            boton_login_out.setText("Iniciar Sesion");
         }else{
             boton_invitado.setText("Mi Tienda");
             boton_reg_carga.setText("Agregar producto");
@@ -48,8 +41,6 @@ public class inicioActivity extends AppCompatActivity {
         }
     }
 
-
-    /* Boton soy visitante, lleva al main activity */
     public void iniciarSesion_activity(View view){
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         String id_actual =sharedPref.getString("id_tienda","crear");
@@ -58,7 +49,7 @@ public class inicioActivity extends AppCompatActivity {
             Intent cambiarn = new Intent(this, Registro.class);
             startActivity(cambiarn);
         }else{
-            editor.putString("nombre", "null");
+            editor.putString("nombre", "crear");
             editor.putString("celular", "null");
             editor.putString("correo", "null");
             editor.putString("direccion", "null");
@@ -67,9 +58,8 @@ public class inicioActivity extends AppCompatActivity {
             editor.putString("id_tienda","crear");
             editor.apply();
             editor.commit();
-            Intent reiniciar = new Intent(this,Visitante_inicio.class);
-            startActivity(reiniciar);
-            //this.finish();
+            Intent visitante = new Intent(this,Visitante_inicio.class);
+            startActivity(visitante);
 
         }
 
@@ -79,17 +69,17 @@ public class inicioActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
         String id_actual =sharedPref.getString("id_tienda","crear");
         if(id_actual.equals("crear")){
-            Intent cambiarn = new Intent(this, Visitante_inicio.class);
-            startActivity(cambiarn);
+            Intent visitante = new Intent(this, Visitante_inicio.class);
+            startActivity(visitante);
         }else{
             Intent logueado = new Intent(this,usuario_logeado.class);
             startActivity(logueado);
+
         }
 
     }
     public  void crear_tienda (View view){
-        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
-        String id_actual =sharedPref.getString("id_tienda","crear");
+        String id_actual =id_actual(id_general);
         if(id_actual.equals("crear")){
             Intent crear = new Intent(this,Crear_tienda.class);
             startActivity(crear);
@@ -98,5 +88,10 @@ public class inicioActivity extends AppCompatActivity {
             startActivity(agregar_prod);
         }
 
+    }
+    public String id_actual (String id){
+        SharedPreferences sharedPref = getSharedPreferences("teinda_logueada",this.MODE_PRIVATE);
+        id =sharedPref.getString("id_tienda","crear");
+        return id;
     }
 }
