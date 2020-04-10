@@ -115,5 +115,6 @@ public class usuario_logeado extends AppCompatActivity {
     public void ir_a_inicio(View view){
         Intent ir_a_inicio = new Intent (ctx,inicioActivity.class);
         startActivity(ir_a_inicio);
+        finish();
     }
 }
