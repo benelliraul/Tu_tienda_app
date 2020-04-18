@@ -57,7 +57,6 @@ public class Crear_tienda extends AppCompatActivity {
     Bitmap bitmap;
     Crear_tienda ctx = this;
     String latitud_actual, longitud_actual;
-    Boolean estado = new Boolean(false);
     String nombre_nuevo;
     String direccion_nueva ;
     String celular_nuevo ;
@@ -111,15 +110,15 @@ public class Crear_tienda extends AppCompatActivity {
     public void Envair_datos(View view){
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada", ctx.MODE_PRIVATE);
         latitud_actual = sharedPref.getString("latitud_usuario", "-39.0000");
-        longitud_actual = sharedPref.getString("longitud_usuario", "-58.84773");
+        longitud_actual = sharedPref.getString("longitud_usuario", "-57.84773");
         Envair_los_datos();
-        Toast.makeText(ctx, "se estan enviando los datos", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ctx, "Se están enviando los datos", Toast.LENGTH_SHORT).show();
     }
 
     private void Envair_los_datos() {
         if(nombre.getText()!=null && direccion.getText() != null && celular != null && correo != null && contrasena != null){
             RequestQueue queue = Volley.newRequestQueue(this);
-            String url_form="http://benelliraul.pythonanywhere.com/formulario_app";
+            String url_form="https://benelliraul.pythonanywhere.com/formulario_app";
             StringRequest request = new StringRequest(Request.Method.POST, url_form, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {

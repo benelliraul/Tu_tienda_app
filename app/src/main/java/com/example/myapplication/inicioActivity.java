@@ -1,13 +1,9 @@
 package com.example.myapplication;
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -81,7 +77,8 @@ public class inicioActivity extends AppCompatActivity {
     public  void crear_tienda (View view){
         String id_actual =id_actual(id_general);
         if(id_actual.equals("crear")){
-            Intent crear = new Intent(this,Crear_tienda.class);
+            Intent crear = new Intent(this,Datos_gps.class);
+            crear.putExtra("actividad_siguiente", "crear_tienda");
             startActivity(crear);
         }else{
             Intent agregar_prod = new Intent(this,addProducto_Activity.class);

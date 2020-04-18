@@ -68,7 +68,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/diseno_botones"
-                            android:onClick="ir_a_loca_2"
+                            android:onClick="ir_a_crear"
                             android:text="Crear Tienda" />
 
                         <TextView

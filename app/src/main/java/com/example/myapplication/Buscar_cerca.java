@@ -43,7 +43,7 @@ public class Buscar_cerca extends AppCompatActivity {
     public void buscar_cerca_intent(View view) {
         SharedPreferences sharedPref = getSharedPreferences("teinda_logueada", this.MODE_PRIVATE);
         latitud = sharedPref.getString("latitud_usuario", "-39.0000");
-        longitud = sharedPref.getString("longitud_usuario", "-58.84773");
+        longitud = sharedPref.getString("longitud_usuario", "-57.84773");
         Intent buscar = new Intent(this, Visitante.class);
         buscar.putExtra("url", "https://benelliraul.pythonanywhere.com/cerca/" + latitud + "/" + longitud + "/" + el_rango);
         startActivity(buscar);

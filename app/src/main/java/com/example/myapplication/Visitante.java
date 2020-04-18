@@ -111,8 +111,9 @@ public class Visitante extends AppCompatActivity {
         Intent login = new Intent(this,Registro.class);
         startActivity(login);
     }
-    public void ir_a_loca_2 (View view){
-        Intent locali = new Intent(this,Crear_tienda.class);
-        startActivity(locali);
+    public void ir_a_crear (View view){
+        Intent crear = new Intent(this,Datos_gps.class);
+        crear.putExtra("actividad_siguiente", "crear_tienda");
+        startActivity(crear);
     }
 }

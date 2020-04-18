@@ -72,6 +72,9 @@ public class Datos_gps extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 locationStart();
                 return;
+            }else{
+                Toast.makeText(ctx, "Para realizar esa acción debe activar el GPS", Toast.LENGTH_LONG).show();
+                finish();
             }
         }
     }
@@ -109,7 +112,7 @@ public class Datos_gps extends AppCompatActivity {
 
         @Override
         public void onProviderEnabled(String provider) {
-            Toast.makeText(ctx, "Obteniendo datos de ubcacion...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx, "Conectando GPS...", Toast.LENGTH_SHORT).show();
         }
 
         @Override
